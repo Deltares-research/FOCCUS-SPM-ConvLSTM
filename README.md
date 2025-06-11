@@ -1,4 +1,4 @@
-# This repository contains the training, validation and testing  scripts, used in the FOCCUS project, for D6.2. 
+This repository contains the training, validation and testing  scripts, used in the FOCCUS project, for D6.2. 
 
 The purpose of this repository is to publish the scripts used to predict Suspended Particulate Matter fields from Delft3D-FM hydrodynamic data, using a ConvLSTM model setup.
 
