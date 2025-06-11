@@ -18,3 +18,6 @@ Example result:
 
 Further validation and accuracy assessments will occur over the duration of WP7.
 FOCCUS is funded by the European Union (Grant Agreement No. 101133911). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Health and Digital Executive Agency (HaDEA). Neither the European Union nor the granting authority can be held responsible for them.
+
+Credits: 
+Senyang Li, Beau van Koert, Lotta Beyaard
