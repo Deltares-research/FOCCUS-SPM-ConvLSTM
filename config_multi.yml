@@ -1,0 +1,69 @@
+# Configuration for SPM Prediction Pipeline
+
+# Base Directory and Paths
+base_dir: "P:\\11210528-foccus-internship\\Beau_vKoert"
+input_ugrid: "P:\\11210528-foccus-internship\\Beau_vKoert\\3.Data\\DFM_data\\DCSM_ugrid_hydro_spm.nc"
+river_file_path: "P:\\11210528-foccus-internship\\Beau_vKoert\\3.Data\\river_file"
+spm_validation_file_path: 'P:\11210528-foccus-internship\Beau_vKoert\3.Data\NWDM\2007-2017_SS_obs.csv'
+results_file_path: "P:\\11210528-foccus-internship\\Beau_vKoert\\5.Results\\Results_ConvLSTM"
+intermediate_dir: "P:\\11210528-foccus-internship\\Beau_vKoert\\5.Results\\Intermediate"
+
+# Time Parameters
+start_time: "2007-01-01"
+end_time: "2007-12-31"
+
+# Environment Flags
+run_on_cluster: true   # set to "false" if you want to run the model in Windows
+
+# Preprocessing Flags
+add_cmems_data: False
+plot_variables: true
+
+# Preprocessing Parameters
+bbox: [2.4, 4.4, 51.0, 52.0]  # [x_min, x_max, y_min, y_max]
+buffer_size: 1.0
+chunk_size: 10
+
+# CMEMS login credentials
+CMEMS_username = ". . . "
+CMEMS_password = ". . . "
+
+# Pipeline Control Flags
+run_ugrid_preprocessing: False
+run_data_processing: true  # must be true
+run_model_training: False
+run_predictions: False
+run_analysis: true
+run_shap: False   # SHAP analysis (WIP)
+
+batch_size_list:                # List of batch sizes to try
+  - 5
+learning_rate_base_list:        # List of base learning rates to try
+  - 0.002
+  - 0.004
+  - 0.006
+T_list:                 # List of values for the T parameter in cosine decay
+  - 3
+  - 5
+num_conv_layers: 4      # Number of ConvLSTM layers
+n_lstm_conv_list:       # List of number of convolutions in the first ConvLSTM layer
+  - 48
+dropout_list:           # List of dropout rates to try
+  - 0.03
+  - 0
+  - 0.1
+activation: 'linear'            # Activation function for the output layer
+use_early_stopping: false        # Activate the early stopper?
+early_stopping_patience: 50     # Early stopper patience (epochs)
+warm_up_epochs: 10              # Number of warm-up epochs
+epochs: 200                     # Total number of epochs for training
+test_per: 0.15                  # Proportion of test samples
+val_per: 0.15                   # Proportion of validation samples
+timestep: 5                     # Number of prediction days
+plot_day_number: 10
+
+# SHAP Analysis Parameters
+shap_samples: 3
+background_samples: 10
+specific_model_name: null
+print_best_models: true

@@ -1,0 +1,61 @@
+# Configuration for SPM Prediction Pipeline
+
+# Base Directory and Paths
+base_dir: ". . . " #path to base directory
+input_ugrid: ". . . " #Path to DCSM model output ugrid
+spm_validation_file_path: '. . . '#path to observation .csv, optional
+results_file_path: ". . . " #Path to results folder for figures
+intermediate_dir: ". . ." #Path to intermediate folder to save model files
+
+# Time Parameters
+start_time: "2007-01-01"  #Start time of the hydrodynamic dataset
+end_time: "2007-12-31"    #End time of the hydrodynamic dataset
+
+# Environment Flags
+run_on_cluster: true   # set to "false" if you want to run the model in Windows instead of Linux
+
+# Preprocessing Flags
+plot_variables: false   # plot selected variables of DCSM dataset
+add_cmems_data: false   # Turn on to add CMEMS SPM layer as data layer 
+add_cmems_4dvarnet_data: true  # requires access to 4DVarNet workflow (not included) MIGHT DELETE THIS FOR GITHUB 
+
+
+# Preprocessing Parameters
+bbox: [2.4, 4.4, 51.0, 52.0]  # [x_min, x_max, y_min, y_max]
+buffer_size: 1.0 #degrees of buffer around area of interest
+chunk_size: 10 #how many timesteps to process at a time, for memory use.
+
+# CMEMS login credentials
+CMEMS_username = ". . . " #Copernicus Marine Data Store username
+CMEMS_password = ". . . " #Copernicus Marine Data Store password 
+
+# Pipeline Control Flags
+run_ugrid_preprocessing: true #To pre-process ugrid into raster data of correct shape.
+run_data_processing: true  # Must always be true, to load data in correctly. 
+run_model_training: true   # Train new model 
+run_predictions: true      # Test model. 
+run_analysis: true         # Produce some figures 
+run_shap: false   # SHAP analysis (takes hours/days)
+
+# Training Parameters (Used for best model version) 
+batch_size_list: [5]
+learning_rate_base_list: [0.002]
+T_list: [3]
+dropout_list: [0]
+warm_up_epochs: 10
+epochs: 200
+activation: 'linear'
+test_per: 0.15
+val_per: 0.15
+use_early_stopping: false
+early_stopping_patience: 50
+num_conv_layers: 4
+n_lstm_conv_list: [48]
+time_step: 5
+plot_day_number: 10
+
+# SHAP Analysis Parameters (WIP)
+shap_samples: 6
+background_samples: 25
+specific_model_name: null
+print_best_models: true
