@@ -17,5 +17,6 @@ Example result:
 ![spm_map_day_10 -cut](https://github.com/user-attachments/assets/a825a23c-e928-4904-a8f1-15fce812e2a6)
 
 Further validation and accuracy assessments will occur over the duration of WP7.
+
 FOCCUS is funded by the European Union (Grant Agreement No. 101133911). Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union or the European Health and Digital Executive Agency (HaDEA). Neither the European Union nor the granting authority can be held responsible for them.
 
